@@ -22,9 +22,15 @@ function update(time) {
 }
 
 function isLose() {
-  const rect = ball.rect()
-  return rect.right >= window.innerWidth || rect.left <= 0
+  const rect = ball.rect();
+  const gameFieldRect = document.getElementById("game-field").getBoundingClientRect();
+  return rect.right >= gameFieldRect.right || rect.left <= gameFieldRect.left;
 }
+
+document.getElementById("game-field").addEventListener("mousemove", e => {
+  const gameFieldRect = document.getElementById("game-field").getBoundingClientRect();
+  playerPaddle.position = ((e.y - gameFieldRect.top) / gameFieldRect.height) * 100;
+});
 
 function handleLose() {
   const rect = ball.rect()

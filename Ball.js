@@ -47,8 +47,10 @@ export default class Ball {
     this.velocity += VELOCITY_INCREASE * delta
     const rect = this.rect()
 
-    if (rect.bottom >= window.innerHeight || rect.top <= 0) {
-      this.direction.y *= -1
+    const gameFieldRect = document.getElementById("game-field").getBoundingClientRect();
+
+    if (rect.bottom >= gameFieldRect.bottom || rect.top <= gameFieldRect.top) {
+      this.direction.y *= -1;
     }
 
     if (paddleRects.some(r => isCollision(r, rect))) {
