@@ -3,15 +3,16 @@
 }
 
 :root {
-  --hue: 200;
-  --saturation: 50%;
-  --foreground-color: hsl(var(--hue), var(--saturation), 75%);
-  --background-color: hsl(var(--hue), var(--saturation), 20%);
+  --main-color: white;
+  --highlight-color: #ff5500;
+  --bg-color: #363636;
+  --slider-thumb-color: var(--bg-color);
+  --infi-orange: #F46A24;
 }
 
 body {
   margin: 0;
-  background-color: var(--background-color);
+  background-color: var(--bg-color);
   overflow: hidden;
 }
 
@@ -19,7 +20,7 @@ body {
   --position: 50;
 
   position: absolute;
-  background-color: var(--foreground-color);
+  background-color: var(--highlight-color);
   top: calc(var(--position) * 1vh);
   transform: translateY(-50%);
   width: 1vh;
@@ -39,7 +40,7 @@ body {
   --y: 50;
 
   position: absolute;
-  background-color: var(--foreground-color);
+  background-color: var(--highlight-color);
   left: calc(var(--x) * 1vw);
   top: calc(var(--y) * 1vh);
   border-radius: 50%;
