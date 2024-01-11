@@ -1,5 +1,5 @@
-const INITIAL_VELOCITY = 0.025
-const VELOCITY_INCREASE = 0.00001
+const INITIAL_VELOCITY = 0.015
+const VELOCITY_INCREASE = 0.00000
 
 export default class Ball {
   constructor(ballElem) {
@@ -49,12 +49,12 @@ export default class Ball {
 
     const gameFieldRect = document.getElementById("game-field").getBoundingClientRect();
 
-    if (rect.bottom >= gameFieldRect.bottom || rect.top <= gameFieldRect.top) {
-      this.direction.y *= -1;
+    if (rect.right >= gameFieldRect.right || rect.left <= gameFieldRect.left) {
+      this.direction.x *= -1;
     }
 
     if (paddleRects.some(r => isCollision(r, rect))) {
-      this.direction.x *= -1
+      this.direction.y *= -1
     }
   }
 }

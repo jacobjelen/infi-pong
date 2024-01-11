@@ -12,7 +12,7 @@ function update(time) {
   if (lastTime != null) {
     const delta = time - lastTime
     ball.update(delta, [playerPaddle.rect(), computerPaddle.rect()])
-    computerPaddle.update(delta, ball.y)
+    computerPaddle.update(delta, ball.x)
 
     if (isLose()) handleLose()
   }
@@ -24,13 +24,15 @@ function update(time) {
 function isLose() {
   const rect = ball.rect();
   const gameFieldRect = document.getElementById("game-field").getBoundingClientRect();
-  return rect.right >= gameFieldRect.right || rect.left <= gameFieldRect.left;
+  return rect.bottom >= gameFieldRect.bottom || rect.top <= gameFieldRect.top;
 }
+
 
 document.getElementById("game-field").addEventListener("mousemove", e => {
   const gameFieldRect = document.getElementById("game-field").getBoundingClientRect();
-  playerPaddle.position = ((e.y - gameFieldRect.top) / gameFieldRect.height) * 100;
+  playerPaddle.position = ((e.x - gameFieldRect.left) / gameFieldRect.width) * 100;
 });
+
 
 function handleLose() {
   const rect = ball.rect()
@@ -44,7 +46,7 @@ function handleLose() {
 }
 
 document.addEventListener("mousemove", e => {
-  playerPaddle.position = (e.y / window.innerHeight) * 100
+  playerPaddle.position = (e.x / window.innerWidth) * 100
 })
 
 window.requestAnimationFrame(update)

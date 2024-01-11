@@ -34,18 +34,18 @@ body {
 
   position: absolute;
   background-color: var(--highlight-color);
-  top: calc(var(--position) * 1%);
-  transform: translateY(-50%);
-  width: 2%; /* Adjusted width */
-  height: 20%; /* Adjusted height */
+  left: calc(var(--position) * 1%);
+  transform: translateX(-50%);
+  width: 20%; /* Adjusted width for horizontal movement */
+  height: 2%; /* Adjusted height */
 }
 
-.paddle.left {
-  left: 0;
+.paddle.player {
+  bottom: 0;
 }
 
-.paddle.right {
-  right: 0;
+.paddle.computer {
+  top: 0;
 }
 
 .ball {
